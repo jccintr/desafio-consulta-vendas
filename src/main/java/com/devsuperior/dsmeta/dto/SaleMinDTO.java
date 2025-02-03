@@ -10,10 +10,12 @@ public class SaleMinDTO {
 	private Double amount;
 	private LocalDate date;
 	
+	
 	public SaleMinDTO(Long id, Double amount, LocalDate date) {
 		this.id = id;
 		this.amount = amount;
 		this.date = date;
+		
 	}
 	
 	public SaleMinDTO(Sale entity) {
@@ -33,4 +35,9 @@ public class SaleMinDTO {
 	public LocalDate getDate() {
 		return date;
 	}
+	
+	
+
+	
+	
 }
