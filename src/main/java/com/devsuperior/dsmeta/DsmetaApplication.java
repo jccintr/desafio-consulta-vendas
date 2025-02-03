@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.devsuperior.dsmeta.dto.SalesReportDTO;
+import com.devsuperior.dsmeta.dto.SalesSummaryDTO;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 
 @SpringBootApplication
@@ -15,7 +15,7 @@ public class DsmetaApplication implements CommandLineRunner {
 
 	@Autowired
 	SaleRepository repository;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(DsmetaApplication.class, args);
 	}
@@ -33,6 +33,13 @@ public class DsmetaApplication implements CommandLineRunner {
 		List<SalesReportDTO> sales = repository.report2();
 		
 		for(SalesReportDTO s: sales) {
+			System.out.println(s);
+		}
+		*/
+		/*
+        List<SalesSummaryDTO> sales = repository.summary();
+		
+		for(SalesSummaryDTO s: sales) {
 			System.out.println(s);
 		}
 		*/
