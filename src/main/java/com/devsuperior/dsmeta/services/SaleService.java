@@ -1,6 +1,8 @@
 package com.devsuperior.dsmeta.services;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +30,11 @@ public class SaleService {
 	
 	public Page<SalesReportDTO> report(String minDate,String maxDate,String name,Pageable pageable) {
 		
-		LocalDate minDt = LocalDate.parse(minDate);
-		LocalDate maxDt = LocalDate.parse(maxDate);
+		LocalDate maxDt = maxDate.length()==0 ? LocalDate.ofInstant(Instant.now(),ZoneId.systemDefault() ) : LocalDate.parse(maxDate);
+		LocalDate minDt = minDate.length()==0 ? maxDt.minusYears(1L) : LocalDate.parse(minDate);
 		Page<SalesReportDTO> sales = repository.report(minDt,maxDt,name,pageable);
 		return sales;
 		
 	}
 	
 }
-
-//final LocalDate dt = LocalDate.parse(minDate);
-//LocalDate.ofInstant(Instant.now(),ZoneId.systemDefault() )
