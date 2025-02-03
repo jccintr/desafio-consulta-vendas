@@ -30,7 +30,7 @@ public class SaleService {
 		
 		LocalDate minDt = LocalDate.parse(minDate);
 		LocalDate maxDt = LocalDate.parse(maxDate);
-		Page<SalesReportDTO> sales = repository.report(minDt,maxDt,pageable);
+		Page<SalesReportDTO> sales = repository.report(minDt,maxDt,name,pageable);
 		return sales;
 		
 	}

@@ -4,7 +4,6 @@ package com.devsuperior.dsmeta.repositories;
 
 import java.time.LocalDate;
 
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,10 +22,10 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	
 	@Query("SELECT new com.devsuperior.dsmeta.dto.SalesReportDTO(s.id,s.date,s.amount,s.seller.name as sellerName) "
 			+ "FROM Sale s "
-			+ "WHERE s.date BETWEEN :minDate and :maxDate")
-			//+ "AND "
-			//+ "UPPER(s.seller.name) LIKE UPPER(CONCAT('%',:name,'%'))")
-	Page<SalesReportDTO> report(LocalDate minDate,LocalDate maxDate,Pageable pageable);
+			+ "WHERE s.date BETWEEN :minDate and :maxDate "
+			+ "AND "
+			+ "UPPER(s.seller.name) LIKE UPPER(CONCAT('%',:name,'%'))")
+	Page<SalesReportDTO> report(LocalDate minDate,LocalDate maxDate,String name,Pageable pageable);
 	
 	/*
 	@Query("SELECT new com.devsuperior.dsmeta.dto.SalesReportDTO(s.id,s.date,s.amount,s.seller.name as sellerName) "
